@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4bw+/aepP/YC94hEpVNVgiZdgIC5+VKNBQNGCHeKRQN+PtmoHDEXuppvnDJzQIu9" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css"
+    integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+
+<body>
+    <section>
+        <div class="container">
+            <h2>List Product</h2>
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <th scope="col">Code</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Date</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Quantity</th>
+                        <th scope="col">Store Code</th>
+                        <th scope="col">Action</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <% products.forEach(e=>{  %>
+                        <tr>
+                            <td><%= e.code %></td>
+                            <td><%= e.name %></td>
+                            <td><%= e.data.toLocaleDateString('en-US') %></td>
+                            <td><%= e.price %></td>
+                            <td><%= e.quantity %></td>
+                            <td><%= e.storecode %></td>
+                            <td>
+                                <a class="btn btn-primary" href="/editProduct/<%= e._id %>">Edit</a>
+                                <a class="btn btn-danger" onclick="return confirm('Xác nhận xoá sản phẩm <%= e.name %>')" href="/deleteProduct/<%= e._id %>">Delete</a>
+                            </td>
+                        </tr>        
+                    <% }) %>
+                </tbody>
+            </table>
+            <a href="/createProduct" class="btn btn-success">Add Product</a>
+        </div>
+    </section>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm" crossorigin="anonymous"></script>
+</body>
+
+</html>
